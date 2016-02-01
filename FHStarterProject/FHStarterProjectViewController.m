@@ -35,7 +35,15 @@
         
         NSDictionary *args = [NSDictionary dictionaryWithObject:name.text forKey:@"hello"];
         FHCloudRequest *req = (FHCloudRequest *) [FH buildCloudRequest:@"/hello" WithMethod:@"POST" AndHeaders:nil AndArgs:args];
-        
+
+        if (![self connected]) {
+            // Not connected
+            result.text = "Not Connectted";
+        } else {
+            // Connected.
+            NSLog(@"Connected");
+        }
+
         [req execAsyncWithSuccess:^(FHResponse * res) {
             // Response
             NSLog(@"Response: %@", res.rawResponseAsString);
