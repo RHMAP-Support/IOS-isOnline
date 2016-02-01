@@ -20,15 +20,6 @@
   [super viewDidLoad];
 }
 
-- (BOOL)connected;
-
-- (BOOL)connected
-{
-    Reachability *reachability = [Reachability reachabilityForInternetConnection];
-    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
-    return networkStatus != NotReachable;
-}
-
 - (IBAction)cloudCall:(id)sender {
     [FH initWithSuccess:^(FHResponse *response) {
         NSLog(@"initialized OK");
@@ -36,11 +27,11 @@
         NSDictionary *args = [NSDictionary dictionaryWithObject:name.text forKey:@"hello"];
         FHCloudRequest *req = (FHCloudRequest *) [FH buildCloudRequest:@"/hello" WithMethod:@"POST" AndHeaders:nil AndArgs:args];
 
-        if (connected) {
-            // connected
+        if (![FH isOnline]) { {
+            // not connected
             UIAlertController *alertController = [UIAlertController
                                                   alertControllerWithTitle: @"Alert"
-                                                  message: @"connected"
+                                                  message: @"not connected"
                                                   preferredStyle:UIAlertControllerStyleAlert];
 
             [self presentViewController:alertController animated:YES completion:nil];
@@ -48,7 +39,7 @@
             // not connected.
             UIAlertController *alertController = [UIAlertController
                                                   alertControllerWithTitle: @"Alert"
-                                                  message: @"not connected"
+                                                  message: @"connected"
                                                   preferredStyle:UIAlertControllerStyleAlert];
             
             [self presentViewController:alertController animated:YES completion:nil];
