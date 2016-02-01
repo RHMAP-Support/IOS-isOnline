@@ -36,12 +36,22 @@
         NSDictionary *args = [NSDictionary dictionaryWithObject:name.text forKey:@"hello"];
         FHCloudRequest *req = (FHCloudRequest *) [FH buildCloudRequest:@"/hello" WithMethod:@"POST" AndHeaders:nil AndArgs:args];
 
-        if (![self connected]) {
-            // Not connected
-            result.text = "Not Connectted";
+        if (connected) {
+            // connected
+            UIAlertController *alertController = [UIAlertController
+                                                  alertControllerWithTitle: @"Alert"
+                                                  message: @"connected"
+                                                  preferredStyle:UIAlertControllerStyleAlert];
+
+            [self presentViewController:alertController animated:YES completion:nil];
         } else {
-            // Connected.
-            NSLog(@"Connected");
+            // not connected.
+            UIAlertController *alertController = [UIAlertController
+                                                  alertControllerWithTitle: @"Alert"
+                                                  message: @"not connected"
+                                                  preferredStyle:UIAlertControllerStyleAlert];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
         }
 
         [req execAsyncWithSuccess:^(FHResponse * res) {
