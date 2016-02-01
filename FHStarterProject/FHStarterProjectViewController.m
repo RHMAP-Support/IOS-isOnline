@@ -27,12 +27,14 @@
         FHCloudRequest *req = (FHCloudRequest *) [FH buildCloudRequest:@"/hello" WithMethod:@"POST" AndHeaders:nil AndArgs:args];
         
         
-        if (![F isOnline]) {
+        NSLog(@"performing connection check");
+        if (![FH isOnline]) {
             // not connected
             NSLog(@"not connected");
         } else {
             NSLog(@"connected");
         }
+        NSLog(@"finished connection check");
             
             [req execAsyncWithSuccess:^(FHResponse * res) {
                 // Response
