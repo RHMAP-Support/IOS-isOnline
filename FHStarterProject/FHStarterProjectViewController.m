@@ -5,6 +5,8 @@
 //
 
 #import "FHStarterProjectViewController.h"
+#import "Reachability.h"
+#import <SystemConfiguration/SystemConfiguration.h>
 
 @interface FHStarterProjectViewController ()
 
@@ -18,6 +20,14 @@
   [super viewDidLoad];
 }
 
+- (BOOL)connected;
+
+- (BOOL)connected
+{
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    return networkStatus != NotReachable;
+}
 
 - (IBAction)cloudCall:(id)sender {
     [FH initWithSuccess:^(FHResponse *response) {
