@@ -25,29 +25,13 @@
         
         NSDictionary *args = [NSDictionary dictionaryWithObject:name.text forKey:@"hello"];
         FHCloudRequest *req = (FHCloudRequest *) [FH buildCloudRequest:@"/hello" WithMethod:@"POST" AndHeaders:nil AndArgs:args];
-
         
         
         if (![FH isOnline]) {
             // not connected
-            UIAlertView *alertView = [[UIAlertView alloc]
-                                      initWithTitle:@"DefaultStyle"
-                                      message:@"not connected"
-                                      delegate:self
-                                      cancelButtonTitle:@"Cancel"
-                                      otherButtonTitles:@"OK", nil];
-            
-            [alertView show];
+            NSLog(@"not connected");
         } else {
-            // not connected.
-            UIAlertView *alertView = [[UIAlertView alloc]
-                                      initWithTitle:@"DefaultStyle"
-                                      message:@"connected"
-                                      delegate:self
-                                      cancelButtonTitle:@"Cancel"
-                                      otherButtonTitles:@"OK", nil];
-            
-            [alertView show];
+            NSLog(@"connected");
         }
             
             [req execAsyncWithSuccess:^(FHResponse * res) {
