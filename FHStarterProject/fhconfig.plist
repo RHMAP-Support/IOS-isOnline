@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist>
+<dict>
+  <key>host</key>
+  <string>https://hpe.us.evals.redhatmobile.com</string>
+  <key>appid</key>
+  <string>x4pxocp5r3b66ll23vse6jlq</string>
+  <key>projectid</key>
+  <string>x4pxocmx6estnhutwyy4lkch</string>
+  <key>appkey</key>
+  <string>7d5aa61f5b3a5673b481b0e59ad5a60fed091e16</string>
+  <key>connectiontag</key>
+  <string>0.0.2</string>
+</dict>
+</plist>

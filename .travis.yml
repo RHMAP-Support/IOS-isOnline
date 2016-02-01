@@ -1,0 +1,9 @@
+language: objective-c
+osx_image: xcode6.4
+xcode_project: FHStarterProject.xcodeproj
+xcode_sdk: iphonesimulator
+xcode_scheme: FHStarterProject
+
+branches:
+  only:
+    - master
